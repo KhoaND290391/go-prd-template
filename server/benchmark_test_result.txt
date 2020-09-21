@@ -1,0 +1,23 @@
+API server listening at: 127.0.0.1:21014
+goos: windows
+goarch: amd64
+pkg: github.com/KhoaND290391/go-prd-template/server
+BenchmarkBootstrapPrimeNumberInt64-4   	       1	8044992600 ns/op
+PASS
+------
+
+API server listening at: 127.0.0.1:42161
+goos: windows
+goarch: amd64
+pkg: github.com/KhoaND290391/go-prd-template/server
+BootstrapPrimeNumberInt64WithChannel-4   	       1	18057031600 ns/op
+PASS
+
+-------
+
+API server listening at: 127.0.0.1:36718
+goos: windows
+goarch: amd64
+pkg: github.com/KhoaND290391/go-prd-template/server
+BenchmarkBootstrapPrimeNumberBigInt-4   	       1	192487001000 ns/op
+PASS

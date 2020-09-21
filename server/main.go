@@ -11,7 +11,9 @@ func check(e error) {
 }
 
 func main() {
-	output, err := GetLowerPrime(15000000000000)
-	check(err)
-	fmt.Println(output)
+	// output, err := GetLowerPrime(15000000000000)
+	// check(err)
+
+	output := BootstrapPrimeNumberInt64WithChannel(100000000)
+	fmt.Println(len(output))
 }

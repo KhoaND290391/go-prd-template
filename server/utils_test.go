@@ -31,3 +31,29 @@ func TestShouldReturnOnlyDigitsPrettyInput(t *testing.T) {
 		}
 	}
 }
+
+func TestBootstrapPrimeNumberBigInt(t *testing.T) {
+
+}
+
+func TestBootstrapPrimeNumberInt64(t *testing.T) {
+	println(len(BootstrapPrimeNumberBigInt(7)))
+}
+
+func BenchmarkBootstrapPrimeNumberBigInt(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		BootstrapPrimeNumberBigInt(7)
+	}
+}
+
+func BenchmarkBootstrapPrimeNumberInt64(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		BootstrapPrimeNumberInt64(10000000)
+	}
+}
+
+func BenchmarkBootstrapPrimeNumberInt64WithChannel(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		BootstrapPrimeNumberInt64WithChannel(10000000)
+	}
+}

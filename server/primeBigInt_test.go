@@ -187,3 +187,15 @@ func BenchmarkIsPrimeBigInt(b *testing.B) {
 		IsPrimeBigInt(big.NewInt(100000000171))
 	}
 }
+
+func BenchmarkGetLowerPrimeBigInt(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		GetLowerPrimeBigInt(big.NewInt(100000000172))
+	}
+}
+
+func BenchmarkGetLowerPrimeCommon(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		GetLowerPrimeCommon("100000000172")
+	}
+}

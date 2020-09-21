@@ -29,7 +29,7 @@ func GetLowerPrimeCommon(inputString string) (output string, err error) {
 
 //GetLowerPrimeBigInt input big Int then get prime number lower and most closed to input.
 // input: should be in N*
-// Complexility by time O(n*log(n)) a half of n every run
+// Complexility by time O(n*square(n)) square of n every run
 func GetLowerPrimeBigInt(input *big.Int) (*big.Int, error) {
 	var one = big.NewInt(1)
 	var two = big.NewInt(2)
@@ -42,26 +42,17 @@ func GetLowerPrimeBigInt(input *big.Int) (*big.Int, error) {
 	if input.Cmp(three) <= 0 {
 		return two, nil
 	}
-
-	// step 1. current_number = substract by 1  if input is even number
-	// subtract by 2 if odd number (ignore current number)
-	if isEvenNumber(cloneInput) {
-		cloneInput = cloneInput.Sub(cloneInput, one)
-	} else {
-		cloneInput = cloneInput.Sub(cloneInput, two)
-	}
-	// step 2. Decrese current_number by 2 every loop (only check odd number)
-	for currentNumber := new(big.Int).Set(cloneInput); currentNumber.BitLen() >= 1; currentNumber.Sub(currentNumber, two) {
-		cloneCurrentNumber := new(big.Int).Set(currentNumber)
-		if IsPrimeBigInt(cloneCurrentNumber) {
-			return cloneCurrentNumber, nil
+	for cloneInput.BitLen() >= 1 {
+		if IsPrimeBigInt(cloneInput) {
+			return cloneInput, nil
 		}
+		cloneInput.Sub(cloneInput, one)
 	}
 	return nil, errors.New("NotFound")
 }
 
-//IsPrime check if input is prime or not
-// Complexility by time O(n)
+//IsPrime check if input is prime or not, without modify pointer's value
+// Complexility by time O(square(n))
 func IsPrimeBigInt(input *big.Int) bool {
 	one := big.NewInt(1)
 	i := big.NewInt(2)
